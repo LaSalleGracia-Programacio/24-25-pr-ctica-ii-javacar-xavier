@@ -1,5 +1,5 @@
 # Practica JavaCar
-Xavier Moreno Navarro \n
+Xavier Moreno Navarro
 
 Sistema de gestió de lloguer de vehicles desenvolupat en Java, seguint els principis de Programació Orientada a Objectes (POO).
 
