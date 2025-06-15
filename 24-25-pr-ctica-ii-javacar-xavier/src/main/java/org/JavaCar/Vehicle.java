@@ -1,7 +1,8 @@
 package org.JavaCar;
 
 /**
- * Clase abstracta que representa un vehículo
+ * Classe abstracta que representa un vehicle
+ * @author Xavier Moreno Navarro
  */
 public abstract class Vehicle implements Llogable {
     protected String matricula;
@@ -13,14 +14,14 @@ public abstract class Vehicle implements Llogable {
     protected String etiquetaAmbiental;
 
     /**
-     * Constructor con todos los atributos
-     * @param matricula Matrícula del vehículo
-     * @param marca Marca del vehículo
-     * @param model Modelo del vehículo
-     * @param preuBase Precio base del vehículo
-     * @param motor Motor del vehículo
-     * @param rodes Ruedas del vehículo
-     * @param etiquetaAmbiental Etiqueta ambiental del vehículo
+     * Constructor amb tots els atributs
+     * @param matricula Matrícula del vehicle
+     * @param marca Marca del vehicle
+     * @param model Model del vehicle
+     * @param preuBase Preu base del vehicle
+     * @param motor Motor del vehicle
+     * @param rodes Rodes del vehicle
+     * @param etiquetaAmbiental Etiqueta ambiental del vehicle
      */
     public Vehicle(String matricula, String marca, String model, double preuBase, 
                 Motor motor, Roda[] rodes, String etiquetaAmbiental) {
@@ -34,56 +35,56 @@ public abstract class Vehicle implements Llogable {
     }
 
     /**
-     * Obtiene la matrícula del vehículo
-     * @return Matrícula del vehículo
+     * Obté la matrícula del vehicle
+     * @return Matrícula del vehicle
      */
     public String getMatricula() {
         return matricula;
     }
 
     /**
-     * Obtiene la marca del vehículo
-     * @return Marca del vehículo
+     * Obté la marca del vehicle
+     * @return Marca del vehicle
      */
     public String getMarca() {
         return marca;
     }
 
     /**
-     * Obtiene el modelo del vehículo
-     * @return Modelo del vehículo
+     * Obté el model del vehicle
+     * @return Model del vehicle
      */
     public String getModel() {
         return model;
     }
 
     /**
-     * Obtiene el precio base del vehículo
-     * @return Precio base del vehículo
+     * Obté el preu base del vehicle
+     * @return Preu base del vehicle
      */
     public double getPreuBase() {
         return preuBase;
     }
 
     /**
-     * Obtiene el motor del vehículo
-     * @return Motor del vehículo
+     * Obté el motor del vehicle
+     * @return Motor del vehicle
      */
     public Motor getMotor() {
         return motor;
     }
 
     /**
-     * Obtiene las ruedas del vehículo
-     * @return Ruedas del vehículo
+     * Obté les rodes del vehicle
+     * @return Rodes del vehicle
      */
     public Roda[] getRodes() {
         return rodes;
     }
 
     /**
-     * Obtiene la etiqueta ambiental del vehículo
-     * @return Etiqueta ambiental del vehículo
+     * Obté l'etiqueta ambiental del vehicle
+     * @return Etiqueta ambiental del vehicle
      */
     public String getEtiquetaAmbiental() {
         return etiquetaAmbiental;

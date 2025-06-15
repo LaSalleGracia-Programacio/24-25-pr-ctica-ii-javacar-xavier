@@ -1,12 +1,16 @@
 package org.JavaCar;
 
+/**
+ * Classe principal que demostra el funcionament del sistema JavaCar
+ * @author Xavier Moreno Navarro
+ */
 public class Main {
     public static void main(String[] args) {
-        // Crear motores
+        // Crear motors
         Motor motorGasolina = new Motor("Gasolina", 120);
-        Motor motorElectric = new Motor("Electric", 150);
+        Motor motorElectric = new Motor("Elèctric", 150);
         
-        // Crear ruedas
+        // Crear rodes
         Roda[] rodesCotxe = {
             new Roda("Michelin", 17),
             new Roda("Michelin", 17),
@@ -26,30 +30,57 @@ public class Main {
             new Roda("Continental", 20)
         };
         
-        // Crear vehículos
+        // Crear vehicles
         Cotxe cotxe = new Cotxe("1234ABC", "Toyota", "Corolla", 30, 5, motorGasolina, rodesCotxe);
         Moto moto = new Moto("5678DEF", "Honda", "CBR", 20, 600, motorElectric, rodesMoto);
         Furgoneta furgoneta = new Furgoneta("9012GHI", "Mercedes", "Sprinter", 40, 1500, motorGasolina, rodesFurgoneta);
         
-        // Crear gestor de alquiler
+        // Crear gestor de lloguers
         LlogableGestor gestor = new LlogableGestor();
         gestor.afegirElement(cotxe);
         gestor.afegirElement(moto);
         gestor.afegirElement(furgoneta);
         
-        // Calcular precios individuales para 3 días
-        System.out.println("=== Precios para 3 días de alquiler ===");
-        System.out.println("Coche " + cotxe.getMarca() + " " + cotxe.getModel() + ": " + cotxe.calcularPreu(3) + "€");
-        System.out.println("Moto " + moto.getMarca() + " " + moto.getModel() + ": " + moto.calcularPreu(3) + "€");
-        System.out.println("Furgoneta " + furgoneta.getMarca() + " " + furgoneta.getModel() + ": " + furgoneta.calcularPreu(3) + "€");
+        // Mostrar informació dels vehicles
+        mostrarInformacioVehicles(cotxe, moto, furgoneta);
         
-        // Calcular precio total para 3 días
-        System.out.println("\nPrecio total para 3 días: " + gestor.calcularPreuTotal(3) + "€");
+        // Calcular i mostrar preus per 3 dies
+        mostrarPreusLloguer(cotxe, moto, furgoneta, gestor);
         
-        // Mostrar etiquetas ambientales
-        System.out.println("\n=== Etiquetas ambientales ===");
-        System.out.println("Coche " + cotxe.getMarca() + " " + cotxe.getModel() + ": " + cotxe.getEtiquetaAmbiental());
-        System.out.println("Moto " + moto.getMarca() + " " + moto.getModel() + ": " + moto.getEtiquetaAmbiental());
-        System.out.println("Furgoneta " + furgoneta.getMarca() + " " + furgoneta.getModel() + ": " + furgoneta.getEtiquetaAmbiental());
+        // Mostrar etiquetes ambientals
+        mostrarEtiquetesAmbientals(cotxe, moto, furgoneta);
+    }
+    
+    private static void mostrarInformacioVehicles(Cotxe cotxe, Moto moto, Furgoneta furgoneta) {
+        System.out.println("=== Informació dels Vehicles ===");
+        System.out.printf("Cotxe: %s %s (Places: %d)%n", 
+            cotxe.getMarca(), cotxe.getModel(), cotxe.getPlaces());
+        System.out.printf("Moto: %s %s (Cilindrada: %d cc)%n", 
+            moto.getMarca(), moto.getModel(), moto.getCilindrada());
+        System.out.printf("Furgoneta: %s %s (Capacitat: %.0f kg)%n", 
+            furgoneta.getMarca(), furgoneta.getModel(), furgoneta.getCapacitatCarga());
+        System.out.println();
+    }
+    
+    private static void mostrarPreusLloguer(Cotxe cotxe, Moto moto, Furgoneta furgoneta, LlogableGestor gestor) {
+        System.out.println("=== Preus per 3 dies de lloguer ===");
+        System.out.printf("Cotxe %s %s: %.2f€%n", 
+            cotxe.getMarca(), cotxe.getModel(), cotxe.calcularPreu(3));
+        System.out.printf("Moto %s %s: %.2f€%n", 
+            moto.getMarca(), moto.getModel(), moto.calcularPreu(3));
+        System.out.printf("Furgoneta %s %s: %.2f€%n", 
+            furgoneta.getMarca(), furgoneta.getModel(), furgoneta.calcularPreu(3));
+        System.out.printf("%nPreu total per 3 dies: %.2f€%n", gestor.calcularPreuTotal(3));
+        System.out.println();
+    }
+    
+    private static void mostrarEtiquetesAmbientals(Cotxe cotxe, Moto moto, Furgoneta furgoneta) {
+        System.out.println("=== Etiquetes Ambientals ===");
+        System.out.printf("Cotxe %s %s: %s%n", 
+            cotxe.getMarca(), cotxe.getModel(), cotxe.getEtiquetaAmbiental());
+        System.out.printf("Moto %s %s: %s%n", 
+            moto.getMarca(), moto.getModel(), moto.getEtiquetaAmbiental());
+        System.out.printf("Furgoneta %s %s: %s%n", 
+            furgoneta.getMarca(), furgoneta.getModel(), furgoneta.getEtiquetaAmbiental());
     }
 }
