@@ -42,3 +42,7 @@ Les contribucions són benvingudes! Si vols contribuir al projecte:
 
 ## Llicència
 Aquest projecte està sota la llicència MIT. Veure el fitxer `LICENSE` per a més detalls.
+
+---
+
+*Commit de prueba per verificar l'execució de GitHub Actions.*
