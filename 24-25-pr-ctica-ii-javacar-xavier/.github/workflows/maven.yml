@@ -1,0 +1,69 @@
+name: Java Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    
+    - name: Build with Maven
+      run: mvn -B clean package --file pom.xml
+    
+    - name: Run Vehicle Tests
+      run: mvn -B test -Dtest=VehicleTest --file pom.xml
+    
+    - name: Run Moto Tests
+      run: mvn -B test -Dtest=MotoTest --file pom.xml
+    
+    - name: Run Furgoneta Tests
+      run: mvn -B test -Dtest=FurgonetaTest --file pom.xml
+    
+    - name: Run Motor Tests
+      run: mvn -B test -Dtest=MotorTest --file pom.xml
+    
+    - name: Run Roda Tests
+      run: mvn -B test -Dtest=RodaTest --file pom.xml
+    
+    - name: Run LlogableGestor Tests
+      run: mvn -B test -Dtest=LlogableGestorTest --file pom.xml
+    
+    - name: Upload Test Results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: |
+          target/surefire-reports/
+          target/test-classes/
+    
+    - name: Test Summary
+      if: always()
+      run: |
+        echo "=== Test Summary ==="
+        echo "Vehicle Tests:"
+        cat target/surefire-reports/org.JavaCar.VehicleTest.txt || echo "No results"
+        echo "Moto Tests:"
+        cat target/surefire-reports/org.JavaCar.MotoTest.txt || echo "No results"
+        echo "Furgoneta Tests:"
+        cat target/surefire-reports/org.JavaCar.FurgonetaTest.txt || echo "No results"
+        echo "Motor Tests:"
+        cat target/surefire-reports/org.JavaCar.MotorTest.txt || echo "No results"
+        echo "Roda Tests:"
+        cat target/surefire-reports/org.JavaCar.RodaTest.txt || echo "No results"
+        echo "LlogableGestor Tests:"
+        cat target/surefire-reports/org.JavaCar.LlogableGestorTest.txt || echo "No results" 
